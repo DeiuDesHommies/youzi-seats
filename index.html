@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>youzi-seats</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">A股游资 / 龙虎榜 persona skill library</p>
+        <h1>youzi-seats</h1>
+        <p class="subtitle">
+          以具名游资 persona 为入口，以结构化证据、案例和复盘解释为核心的研究型 skill 库。
+        </p>
+      </div>
+      <div class="header-actions">
+        <a href="./README.md" target="_blank" rel="noreferrer">查看 README</a>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <section class="panel">
+          <h2>使用方式</h2>
+          <ul class="simple-list">
+            <li>盘前：看风格判断与观察清单</li>
+            <li>盘后：做龙虎榜 / 题材 / 席位复盘解释</li>
+            <li>长期：比较不同 persona，沉淀方法论</li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <h2>浏览维度</h2>
+          <div class="filter-group">
+            <label for="persona-select">人物</label>
+            <select id="persona-select"></select>
+          </div>
+          <div class="filter-group">
+            <label for="seat-select">席位</label>
+            <select id="seat-select"></select>
+          </div>
+          <div class="filter-group">
+            <label for="style-select">风格</label>
+            <select id="style-select"></select>
+          </div>
+          <div class="filter-group">
+            <label for="tag-select">标签</label>
+            <select id="tag-select"></select>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Persona 列表</h2>
+          <div id="persona-list" class="persona-list"></div>
+        </section>
+
+        <section class="panel">
+          <h2>对比选择</h2>
+          <div id="compare-picker" class="persona-list"></div>
+        </section>
+
+        <section class="panel">
+          <h2>筛选结果</h2>
+          <div id="filter-results" class="persona-list"></div>
+        </section>
+      </aside>
+
+      <section class="content">
+        <div class="panel risk-rail" id="global-risk-rail">
+          <strong>风险轨道：</strong>
+          本站内容是研究与复盘资料，不是交易指令；persona 是市场认知入口，不是官方身份认证；龙虎榜披露有滞后；请不要把标签化理解直接当成确定性优势。
+        </div>
+
+        <div id="persona-detail" class="persona-detail"></div>
+
+        <div id="compare-view" class="compare-view"></div>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

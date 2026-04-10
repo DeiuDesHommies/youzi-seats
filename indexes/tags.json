@@ -1,0 +1,7 @@
+[
+  { "tag": "商业航天", "personas": ["chen-xiaoqun", "zuoshou-xinyi", "zhangmengzhu"] },
+  { "tag": "AI", "personas": ["chen-xiaoqun", "zhangmengzhu"] },
+  { "tag": "20cm", "personas": ["zhangmengzhu", "chaogu-yangjia"] },
+  { "tag": "连板接力", "personas": ["chen-xiaoqun", "zuoshou-xinyi"] },
+  { "tag": "情绪博弈", "personas": ["chaogu-yangjia", "chen-xiaoqun"] }
+]

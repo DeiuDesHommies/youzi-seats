@@ -1,0 +1,33 @@
+{
+  "id": "zuoshou-xinyi",
+  "name": "作手新一",
+  "launch": false,
+  "oneLineSummary": "非首发 dry-run persona，用于验证新增 persona 是否只需新增 unit 与更新索引即可接入。",
+  "overallConfidence": "low",
+  "positioning": "扩展验证候选人，用来证明未来增加新 persona 不需要重构库结构。",
+  "styleTags": ["短线强势股", "情绪博弈", "龙头博弈"],
+  "associatedSeats": [
+    "国泰海通证券南京太平南路证券营业部"
+  ],
+  "corePatterns": [
+    "公开媒体常把该 persona 与短线强势股、情绪博弈联系在一起。"
+  ],
+  "claimProvenance": [
+    [0, 1]
+  ],
+  "preferredSetups": [
+    "情绪高弹性板块",
+    "高辨识度热点标的"
+  ],
+  "failureModes": [
+    "公开材料的叙事强于硬证据，容易放大神话感。"
+  ],
+  "misuseWarnings": [
+    "不要把 dry-run persona 页面当作首发质量标准的最终上限。"
+  ],
+  "uncertaintyNotes": [
+    "本条目用于结构验证，公开材料覆盖度低于首发 persona。"
+  ],
+  "responsibility": "本页面主要用于验证扩展流程，而不是作为第一批正式对外样板。",
+  "riskRail": "dry-run 条目；研究资料，不是交易指令；用于验证扩展流程。"
+}

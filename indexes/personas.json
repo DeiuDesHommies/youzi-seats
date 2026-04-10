@@ -1,0 +1,26 @@
+[
+  {
+    "id": "chen-xiaoqun",
+    "name": "陈小群",
+    "launch": true,
+    "summary": "高热度新生代 persona，常被市场拿来解释情绪龙头、热点接力与快节奏兑现。"
+  },
+  {
+    "id": "zhangmengzhu",
+    "name": "章盟主",
+    "launch": true,
+    "summary": "老牌高辨识度 persona，常被描述为题材敏锐、资金体量大、兼顾趋势与波段。"
+  },
+  {
+    "id": "chaogu-yangjia",
+    "name": "炒股养家",
+    "launch": true,
+    "summary": "高认知度心法型 persona，常与情绪周期、强势股理解和短期风格纪律联系在一起。"
+  },
+  {
+    "id": "zuoshou-xinyi",
+    "name": "作手新一",
+    "launch": false,
+    "summary": "作为 dry-run 候选 persona，用于验证未来新增 persona 的扩展流程。"
+  }
+]

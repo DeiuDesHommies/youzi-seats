@@ -1,0 +1,7 @@
+[
+  { "style": "情绪接力", "personas": ["chen-xiaoqun", "zuoshou-xinyi"] },
+  { "style": "题材敏锐", "personas": ["zhangmengzhu", "chaogu-yangjia"] },
+  { "style": "龙头博弈", "personas": ["chen-xiaoqun", "zuoshou-xinyi", "chaogu-yangjia"] },
+  { "style": "波段趋势", "personas": ["zhangmengzhu"] },
+  { "style": "情绪周期", "personas": ["chaogu-yangjia", "chen-xiaoqun"] }
+]

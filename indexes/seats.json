@@ -1,0 +1,22 @@
+[
+  {
+    "seat": "中国银河证券大连黄河路证券营业部",
+    "personas": ["chen-xiaoqun"]
+  },
+  {
+    "seat": "国泰海通证券上海长宁区江苏路证券营业部",
+    "personas": ["zhangmengzhu"]
+  },
+  {
+    "seat": "华鑫证券上海宛平南路证券营业部",
+    "personas": ["chaogu-yangjia"]
+  },
+  {
+    "seat": "华鑫证券上海红宝石路证券营业部",
+    "personas": ["chaogu-yangjia"]
+  },
+  {
+    "seat": "国泰海通证券南京太平南路证券营业部",
+    "personas": ["zuoshou-xinyi"]
+  }
+]
