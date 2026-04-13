@@ -1,224 +1,288 @@
 # youzi-seats
 
-这是一个围绕 **A 股游资 / 龙虎榜 persona skill library** 的项目草案目录。
+> *「不是把席位神化，而是把市场如何理解这些席位，拆开给你看。」*
 
-当前这个项目还处在 **提案与设计阶段**，核心目标不是做一个“实时荐股工具”，也不是做一个“大而全的 A 股交易系统”，而是做一个：
+**一个面向 A 股游资 / 龙虎榜 persona 的研究型静态资料库。**
 
-> **以具名游资 persona 为入口、以结构化证据和复盘解释为核心的 skill 库。**
+它不是交易指令工具，也不是“跟着某个席位买”的模仿器。`youzi-seats` 做的是把市场常见的游资 persona，整理成一套**可浏览、可比较、可追溯、可继续扩展**的结构化资料：包括 persona 定位、风格标签、代表案例、来源证明、风险边界，以及可直接渲染的 skill 原文。
 
-比如以后这个项目里可能会出现：
-
-- 陈小群 skill
-- 章盟主 skill
-- 炒股养家 skill
-
-但这些内容不会只是人物故事，而会被整理成统一结构的研究型 skill。
+[看页面效果](#页面里有什么) · [快速开始](#快速开始) · [仓库结构](#仓库结构) · [数据结构](#数据结构) · [风险边界](#风险边界)
 
 ---
 
-## 这个项目是做什么的
+## 页面里有什么
 
-目前市场上关于游资的信息很多，但非常分散：
+当前仓库已经实现了一套可本地打开的静态页面，用来浏览和比较游资 persona。
 
-- 龙虎榜页面有一点
-- 社区复盘有一点
-- 媒体文章有一点
-- 各种“江湖说法”又有一点
+### 你现在可以做的事
 
-这个项目想做的，就是把这些分散信息整理成一个 **可浏览、可比较、可扩展、可沉淀** 的 persona skill 库。
+- 浏览 persona 列表
+- 按 **人物 / 席位 / 风格 / 标签** 筛选
+- 查看单个 persona 的定位、适用场景、失效方式、风险轨道
+- 查看 **claim 级 provenance** 绑定的公开来源
+- 查看代表案例和 skill 原文
+- 最多选择 **3 个 persona** 做并排比较
 
-简单说：
+当前已收录 4 个 persona：
 
-> 用户通过“陈小群、章盟主、炒股养家”这些名字进入，
-> 但真正获得的是：
-> **风格理解、席位行为解释、案例、证据分层、风险与误用提醒。**
-
----
-
-## 这个项目以后实现后能怎么用
-
-### 1. 盘前用
-
-盘前可以把它当成“风格判断工具”来用。
-
-用户可以看某个 persona skill，快速理解：
-
-- 今天这种市场环境像不像这个 persona 常出手的环境
-- 某类席位行为通常意味着什么
-- 哪些情况适合重点观察，哪些情况不适合盲目模仿
-
-它更像是一个 **盘前观察框架**，而不是直接给买卖指令。
-
-### 2. 盘后用
-
-盘后它最适合拿来做复盘。
-
-比如看到某只票上了龙虎榜，或者市场都在说“某某游资来了”，用户可以用这个库去判断：
-
-- 这种行为到底像不像这个 persona 的典型模式
-- 这是不是市场在过度贴标签
-- 历史上类似场景通常怎么演化
-- 最容易出错和被误解的地方是什么
-
-所以它很适合做一个 **复盘解释器**。
-
-### 3. 长期用
-
-长期来看，这个项目可以用来积累方法论。
-
-用户可以持续比较不同 persona：
-
-- 陈小群 vs 章盟主
-- 炒股养家 vs 作手新一
-- 不同人设对同类行情的理解差异
-
-它最终会变成一个 **游资 persona 研究库 / 学习库**。
+- [陈小群](./skills/chen-xiaoqun/metadata.json)
+- [章盟主](./skills/zhangmengzhu/metadata.json)
+- [炒股养家](./skills/chaogu-yangjia/metadata.json)
+- [作手新一（dry-run）](./skills/zuoshou-xinyi/metadata.json)
 
 ---
 
-## 这个项目可以用在哪里
+## 为什么这个库有意义
 
-根据目前调研，这个方向最适合落在下面几种产品形态里：
+市面上很多“游资内容”，要么只有叙事，要么只有席位截图，要么直接滑向“带单 / 神话化”。
 
-### 1. 独立网站 / 独立 skill library
+`youzi-seats` 不是这么组织的。
 
-最直观的形态。
+这个项目把每个 persona 都拆成统一结构：
 
-用户可以在网站里浏览 persona 列表，点进每个 skill 页面，看：
+- **怎么被市场理解**：定位、一句话总结、风格标签
+- **什么时候容易成立**：preferred setups
+- **什么时候容易失效**：failure modes、misuse warnings
+- **证据从哪来**：sources + claim provenance
+- **实际怎么落地成阅读材料**：`skill.md`
 
-- 风格总结
-- 证据来源
-- 案例
-- 误用风险
-- 适用/不适用场景
-
-### 2. 金融 App 的研究模块
-
-比如以后可以作为一个：
-
-- 龙虎榜研究页
-- 游资 persona 栏目
-- 复盘模块
-
-嵌入在更大的金融产品里。
-
-### 3. AI assistant workspace
-
-以后也可以扩展成 AI 助手使用。
-
-比如用户提问：
-
-- 今天的盘面更像哪个 persona 会出手？
-- 这种走势更像陈小群还是章盟主？
-- 这个标签是不是市场硬套的？
-
-这时 persona skill 库就会成为 AI 的知识底座。
-
-### 4. 内部研究工具
-
-哪怕暂时不对外，也可以先作为一个团队内部的研究资料系统来用：
-
-- 整理 persona
-- 保存证据
-- 积累案例
-- 反复修订解释框架
+它更像一个研究型浏览器，而不是一个情绪化口号集合。
 
 ---
 
-## 这个项目能解决什么问题
+## 页面里展示哪些内容
 
-如果以后实现，这个项目最主要能做下面几件事：
+打开 [`index.html`](./index.html) 后，页面包含三大块：
 
-### 1. 把分散信息整理成结构化框架
+### 1. 左侧：浏览与筛选
 
-把龙虎榜、题材、席位、媒体解释、社区讨论整理成统一结构。
+- 人物筛选
+- 席位筛选
+- 风格筛选
+- 标签筛选
+- Persona 列表
+- Compare 选择器
+- 当前筛选结果
 
-### 2. 帮用户理解 persona，而不是神化 persona
+### 2. 右侧：单个 persona 详情
 
-它不是为了“造神”，而是帮助用户理解：
+每个 persona 会展示：
 
-- 某个 persona 为什么会被市场这样理解
-- 这种理解哪些部分是证据、哪些部分只是传闻
+- 一句话总结
+- 整体置信度
+- 风格标签
+- Persona 定位
+- 适用 / 不适用场景
+- 风险轨道与责任说明
+- Dual-Lens 结论（价值侧 / 失败侧）
+- Claim 级 Provenance
+- 公开来源卡片
+- 代表案例
+- Skill 原文
 
-### 3. 帮用户做比较
+### 3. 底部：Compare View
 
-所有 persona 都按同一个 schema 来写，所以不同 persona 可以直接比较。
+适合拿来做这种对比：
 
-### 4. 帮未来扩展更多游资 persona
-
-这个项目不是一次性内容，而是一个可扩展的库。
-
-未来可以继续增加：
-
-- 更多游资 persona
-- 更多席位关联
-- 更多风格标签
-- 更多 cross-persona 对比能力
-
----
-
-## 当前提案里已经确定的几个核心原则
-
-### persona-first packaging, style-first substance
-
-意思是：
-
-- 外面看起来是“人物入口”
-- 里面真正提供的是“风格理解 + 证据 + 案例 + 风险解释”
-
-### 统一 schema
-
-每个 persona skill 都必须按统一模板来写，不能变成散乱文章。
-
-### evidence layers
-
-每个 skill 的结论都要区分：
-
-- 硬证据
-- 解释性资料
-- 不确定叙事
-
-### provenance
-
-重要结论要能追溯来源、时间、新鲜度、是否有冲突证据。
-
-### dual-lens output
-
-不能只讲“优势”，还要同时讲：
-
-- failure mode
-- misuse mode
-- scenario mismatch
-
-### persistent risk rails
-
-每个页面都要长期带着“这是什么、这不是什么、容易被怎么误用”的提示。
+- 新生代热点接力 persona 和老牌高辨识度 persona 的差别
+- “情绪周期 / 强势股理解” 和 “题材敏锐 / 波段趋势” 的差别
+- 首发样板 persona 和 dry-run 扩展条目的差别
 
 ---
 
-## 当前项目状态
+## 快速开始
 
-当前目录里已经有 OpenSpec 提案与设计文档，主要在：
+这个项目当前就是：
 
-```text
-openspec/changes/persona-first-youzi-skills/
+- 一个静态页面入口：[`index.html`](./index.html)
+- 一份页面逻辑：[`app.js`](./app.js)
+- 一套样式：[`styles.css`](./styles.css)
+- 一组 persona 数据：[`skills/`](./skills)
+
+### 方式 1：直接打开
+
+直接打开根目录下的 [`index.html`](./index.html) 即可。
+
+### 方式 2：本地起一个静态服务
+
+如果浏览器对本地 `fetch()` 有限制，可以在仓库根目录运行：
+
+```bash
+python3 -m http.server 8000
 ```
 
-其中包括：
+然后访问：
 
-- `proposal.md`：为什么做
-- `design.md`：怎么设计
-- `specs/`：系统必须满足什么要求
-- `tasks.md`：接下来实现要做哪些任务
+```text
+http://localhost:8000
+```
 
-目前它们已经整理到了一个比较完整、可继续进入实现阶段的状态。
+## 数据结构
+
+每个 persona 都是一个固定结构的独立 unit：
+
+```text
+skills/<persona-id>/
+├── skill.md
+├── metadata.json
+├── evidence/
+│   └── sources.json
+└── cases/
+    └── cases.json
+```
+
+对应职责：
+
+- [`skill.md`](./skills/chen-xiaoqun/skill.md)：面向阅读的研究型成品
+- [`metadata.json`](./skills/chen-xiaoqun/metadata.json)：结构化渲染字段
+- [`evidence/sources.json`](./skills/chen-xiaoqun/evidence/sources.json)：来源和证据层
+- [`cases/cases.json`](./skills/chen-xiaoqun/cases/cases.json)：代表案例
+
+筛选索引放在 [`indexes/`](./indexes) 下：
+
+- [`personas.json`](./indexes/personas.json)
+- [`seats.json`](./indexes/seats.json)
+- [`styles.json`](./indexes/styles.json)
+- [`tags.json`](./indexes/tags.json)
 
 ---
 
-## 一句话总结
+## 页面怎么工作
 
-这个项目如果以后实现出来，最适合被当成：
+[`app.js`](./app.js) 当前做的事情很直接：
 
-> **游资 persona 研究库 + 复盘解释器 + 长期方法论知识库**
+1. 读取索引文件
+2. 加载 persona 的 `metadata / evidence / cases / skill`
+3. 绑定筛选器
+4. 渲染详情页
+5. 渲染 compare view
 
-而不是一个直接替用户下结论的交易执行器。
+也就是说，这个仓库的重点不是工程复杂度，而是**资料结构化**和**研究可追溯性**。
+
+---
+
+## 当前收录的 persona
+
+### 陈小群
+
+高热度新生代 persona，项目中的 persona 入口型样板，突出热点题材、情绪接力、龙头博弈与快节奏兑现。
+
+- [metadata](./skills/chen-xiaoqun/metadata.json)
+- [skill](./skills/chen-xiaoqun/skill.md)
+- [sources](./skills/chen-xiaoqun/evidence/sources.json)
+- [cases](./skills/chen-xiaoqun/cases/cases.json)
+
+### 章盟主
+
+老牌高辨识度 persona，偏题材敏锐、波段趋势、大资金博弈，适合和新生代热点接力型 persona 做对照。
+
+- [metadata](./skills/zhangmengzhu/metadata.json)
+- [skill](./skills/zhangmengzhu/skill.md)
+- [sources](./skills/zhangmengzhu/evidence/sources.json)
+- [cases](./skills/zhangmengzhu/cases/cases.json)
+
+### 炒股养家
+
+兼具席位认知与“心法学习”属性的 persona，更偏研究 / 学习型入口。
+
+- [metadata](./skills/chaogu-yangjia/metadata.json)
+- [skill](./skills/chaogu-yangjia/skill.md)
+- [sources](./skills/chaogu-yangjia/evidence/sources.json)
+- [cases](./skills/chaogu-yangjia/cases/cases.json)
+
+### 作手新一
+
+非首发 dry-run persona，用来验证未来新增 persona 时，是否能沿着统一结构继续扩展。
+
+- [metadata](./skills/zuoshou-xinyi/metadata.json)
+- [skill](./skills/zuoshou-xinyi/skill.md)
+- [sources](./skills/zuoshou-xinyi/evidence/sources.json)
+- [cases](./skills/zuoshou-xinyi/cases/cases.json)
+
+---
+
+## Schema 与约束
+
+项目已经把 persona skill 的统一规则写在：
+
+- [`schemas/persona-skill-schema.md`](./schemas/persona-skill-schema.md)
+
+此外仓库里还放了几份相关规则文档：
+
+- [`schemas/evidence-confidence-schema.md`](./schemas/evidence-confidence-schema.md)
+- [`schemas/risk-boundary-schema.md`](./schemas/risk-boundary-schema.md)
+- [`schemas/publishing-rules.md`](./schemas/publishing-rules.md)
+- [`schemas/persona-maintenance-workflow.md`](./schemas/persona-maintenance-workflow.md)
+
+当前这套结构强调四件事：
+
+1. **可比较**：不同 persona 用同一套字段描述
+2. **可扩展**：新条目可以按 unit 增长
+3. **可追溯**：核心结论要能回到来源
+4. **有边界**：不能把 market-attributed persona 写成官方身份认证
+
+---
+
+## 仓库结构
+
+```text
+youzi-seats/
+├── index.html
+├── app.js
+├── styles.css
+├── indexes/
+├── skills/
+├── schemas/
+├── openspec/
+└── .opencode/
+```
+
+其中真正和当前页面 / 数据展示直接相关的，主要是：
+
+- [`index.html`](./index.html)
+- [`app.js`](./app.js)
+- [`styles.css`](./styles.css)
+- [`indexes/`](./indexes)
+- [`skills/`](./skills)
+- [`schemas/`](./schemas)
+
+`openspec/` 和 `.opencode/` 属于过程 / 工具侧产物，不是这个静态资料库的核心使用入口。
+
+---
+
+## 适合怎么用
+
+这个仓库更适合：
+
+- 做游资 persona 的研究型资料整理
+- 做盘后复盘，观察市场如何借 persona 解释热点与席位
+- 对比不同 persona 的风格标签、适用场景和失效方式
+- 继续往这个库里补新的 persona unit
+
+不适合：
+
+- 把 persona 页面当成交易建议
+- 把公开榜单披露当成实时信号
+- 把席位标签直接当成自然人身份确认
+- 脱离题材周期、承接条件、市场环境做机械模仿
+
+---
+
+## 风险边界
+
+这是一个研究资料库，不是交易指令系统。
+
+- persona 是市场认知入口，不是官方身份认证
+- 龙虎榜等公开披露信息天然有滞后
+- 市场对席位的归因经常带有叙事强化
+- 标签化理解可能有用，但也最容易被误用
+
+如果你把它当作“研究市场如何理解某类游资 persona”的资料库，它是有价值的。
+
+如果你把它当作“照着买就行”的工具，那就是误用。
+
+---
+
+## License
+
+MIT
